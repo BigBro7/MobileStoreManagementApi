@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MobileStoreManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Master_Brand">
+          <Key>
+            <PropertyRef Name="Srno" />
+          </Key>
+          <Property Name="Srno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Master_Model">
+          <Key>
+            <PropertyRef Name="Srno" />
+          </Key>
+          <Property Name="Srno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModelName" Type="varchar" MaxLength="100" />
+          <Property Name="BrandId" Type="int" />
+        </EntityType>
+        <EntityType Name="Master_Storage">
+          <Key>
+            <PropertyRef Name="Srno" />
+          </Key>
+          <Property Name="Srno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandId" Type="int" />
+          <Property Name="ModelId" Type="int" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Recieved_Date" Type="datetime" />
+          <Property Name="Sold_Date" Type="datetime" />
+          <Property Name="Sold_Flag" Type="bit" />
+          <Property Name="Discount_Percentage" Type="float" />
+          <Property Name="Discount_Price" Type="float" />
+          <Property Name="Sold_Price" Type="float" />
+          <Property Name="Customer" Type="varchar" MaxLength="50" />
+          <Property Name="Said_Price" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MobileStoreManagementModelStoreContainer">
+          <EntitySet Name="Master_Brand" EntityType="Self.Master_Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Model" EntityType="Self.Master_Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master_Storage" EntityType="Self.Master_Storage" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MobileStoreManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Master_Brand">
+          <Key>
+            <PropertyRef Name="Srno" />
+          </Key>
+          <Property Name="Srno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Master_Model">
+          <Key>
+            <PropertyRef Name="Srno" />
+          </Key>
+          <Property Name="Srno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModelName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BrandId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Master_Storage">
+          <Key>
+            <PropertyRef Name="Srno" />
+          </Key>
+          <Property Name="Srno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandId" Type="Int32" />
+          <Property Name="ModelId" Type="Int32" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Recieved_Date" Type="DateTime" Precision="3" />
+          <Property Name="Sold_Date" Type="DateTime" Precision="3" />
+          <Property Name="Sold_Flag" Type="Boolean" />
+          <Property Name="Discount_Percentage" Type="Double" />
+          <Property Name="Discount_Price" Type="Double" />
+          <Property Name="Sold_Price" Type="Double" />
+          <Property Name="Customer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Said_Price" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MobileStoreManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Master_Brand" EntityType="Self.Master_Brand" />
+          <EntitySet Name="Master_Model" EntityType="Self.Master_Model" />
+          <EntitySet Name="Master_Storage" EntityType="Self.Master_Storage" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MobileStoreManagementModelStoreContainer" CdmEntityContainer="MobileStoreManagementEntities">
+          <EntitySetMapping Name="Master_Brand">
+            <EntityTypeMapping TypeName="MobileStoreManagementModel.Master_Brand">
+              <MappingFragment StoreEntitySet="Master_Brand">
+                <ScalarProperty Name="Srno" ColumnName="Srno" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Model">
+            <EntityTypeMapping TypeName="MobileStoreManagementModel.Master_Model">
+              <MappingFragment StoreEntitySet="Master_Model">
+                <ScalarProperty Name="Srno" ColumnName="Srno" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Master_Storage">
+            <EntityTypeMapping TypeName="MobileStoreManagementModel.Master_Storage">
+              <MappingFragment StoreEntitySet="Master_Storage">
+                <ScalarProperty Name="Said_Price" ColumnName="Said_Price" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Srno" ColumnName="Srno" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Recieved_Date" ColumnName="Recieved_Date" />
+                <ScalarProperty Name="Sold_Date" ColumnName="Sold_Date" />
+                <ScalarProperty Name="Sold_Flag" ColumnName="Sold_Flag" />
+                <ScalarProperty Name="Discount_Percentage" ColumnName="Discount_Percentage" />
+                <ScalarProperty Name="Discount_Price" ColumnName="Discount_Price" />
+                <ScalarProperty Name="Sold_Price" ColumnName="Sold_Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
